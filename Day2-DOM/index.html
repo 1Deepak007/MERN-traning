@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript-DOM</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        .headings{
+            font-family: sans-serif; 
+            color: red; 
+            text-decoration: underline; 
+            text-align:center;
+        }
+        .imgCenter{
+            margin-top: 20px;
+            margin-right: auto;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="headings">Javascsript</h2>
+    <div style="margin-left: 5px; margin-right: 5px; margin-top:5px; margin-bottom:5px; border:5px solid brown">
+
+        <h3 style="text-decoration: underline;">Links</h3>
+        <a href="https://www.google.com/" title="google"><img src="./icons/google-logo-search-new-svgrepo-com.svg" height="30px" style="margin: 10px;"/></a>
+        <a href="https://www.amazon.com/" title="amazon"><img src="./icons/amazon-color-svgrepo-com.svg" height="30px" style="margin: 10px;"/></a>
+        <a href="https://www.facebook.com/" title="facebook"><img src="./icons//facebook-color-svgrepo-com.svg" height="30px" style="margin: 10px;"/></a>
+        
+        <hr>
+
+        <form id="task-form" action="">
+            <h3 style="text-decoration: underline; text-align:center;">Form</h3>
+            <label for="name">Name</label>
+            <input type="text" id="name">
+            <label for="course">Course</label>
+            <input type="text" id="course">
+        </form>
+        
+        <form id="task-form1" action="">
+            <h3 style="text-decoration: underline; text-align:center;">Form</h3>
+            <label for="task">Task</label>
+            <input type="text" id="task">
+            <label for="desc">Description</label>
+            <input type="text" id="desc">
+        </form>
+
+        <hr>
+
+        <h2 class="headings">Javascript DOM</h2>
+        <img src="./images/dom.png" alt="dom image here" height="300px" width="500px" class="imgCenter" style="transform: translate(40%, -10%); "/>
+        
+
+        <!-- ##  DOM  (getElementById(id), getElementByClassName(clsnm), getElementByTagName(tgnm))-->
+    
+        <p id="para1">This is a paragraph</p>
+        <h4 id="heading1">I am heading1.</h4>
+        <h4 class="heading2">I am heading2.</h4>
+        <h4 class="heading2">I am heading3.</h4>
+        <h4>I am heading4.</h4>
+
+
+        <p class="para_g">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, consectetur!</p>
+        <p class="para_g">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur qui voluptate sint necessitatibus vel dignissimos.</p>
+
+    </div>
+
+    <!-- body is parent node for below div -->
+    <div>
+        <img src="./images/dom.png" alt="image here" height="50px" width="70px" />
+        <h4>GETTING ELEMENTS</h4>
+        <p>hjas cahns cjas cjas ckasj ckajsc nmmm,ncsa;m lasmcl</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla earum soluta consectetur repellat distinctio error ducimus laboriosam ab voluptatem? Dolorum.</p>
+        <div><p>Lorem ipsum dolor sit amet.</p></div>
+    </div>
+
+
+    <div id="divFruits">
+        <h3>Fruits</h3>
+        <ul>
+            <li>mango</li>
+            <li>orange</li>
+            <li>lichi</li>
+        </ul>
+    </div>
+
+    <div id="mydiv"></div>
+
+    <!--           hides element      -->
+    <h4 style="visibility: hidden;" id="hidnEle">Old Heading</h4>
+
+</body>
+<script src="./index.js"></script>
+</html>
+
+<!-- 
+    <body>
+        <diV>                                                      * 1st child for body
+            <img src="" />                  * div.childern[0]      * 1st child for div
+            <h2>jj</h2>                     * div.childern[1]
+            <p>sjdljlskldll;sajkd </p>      * div.childern[2]      * lastchild for div
+        </diV>
+    </body>
+ -->
