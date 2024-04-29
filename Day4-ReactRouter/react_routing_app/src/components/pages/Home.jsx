@@ -92,7 +92,7 @@ export default function Home(props) {
 
                         <div className="col-12">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" id="gridCheck" onChange={(e) => setConfirm(!confirm)} required />
+                                <input className="form-check-input" type="checkbox" id="gridCheck" onChange={(e) => setConfirm(e.target.value)} required />
                                 <label className="form-check-label" htmlFor="gridCheck">
                                     My above detail is correct as per my knowledge.
                                 </label>
