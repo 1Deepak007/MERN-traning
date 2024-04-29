@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
     <link rel="stylesheet" href="./main.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <h1 style="text-align: center; text-decoration:underline">Javascript</h1>
+<style>
+    tr:nth-child(even) {
+        background-color: rgb(180, 170, 170);
+        /* Change the color as needed */
+        color: darkblue;
+    }
 
-    
-    <div class="container">
-        <h3 style="text-align: center;">Table of Content</h3>
+    tr:nth-child(odd) {
+        color: white;
+    }
+</style>
+
+<body>
+    <h1
+        style="text-align: center; text-decoration:underline; background:linear-gradient(to right,#56ab2f,#a8e063); margin-top:auto; padding-bottom:2px;">
+        Javascript</h1>
+
+
+    <div class="container"
+        style="background: linear-gradient(to right, #141e30, #243b55); padding-bottom:1%; margin-top:auto; margin-bottom:auto;">
+        <h3 style="text-align: center; color:white; padding-top:1%;">Table of Content</h3>
         <table class="table">
             <thead>
                 <tr>
@@ -73,13 +98,77 @@
         </table>
     </div>
 
-    
-
 
     <!-------------------------------------------------------->
+    <hr/>
+
+
+    <div class="container my-4" id="container1">
+        <div class="login-form" style="background:linear-gradient(to right, #0000,#9999);">
+            <h2 style="text-align: center; text-decoration:underline; ">Add User</h2>
+            <form id="my-form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Enter username">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter email">
+                </div>
+                <button type="submit" id="subBtn" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+
+        <ul id="employees"></ul>
+
+        <hr/>
+        
+        <ul id="users">
+            <li class="user-1">user1</li>
+            <li class="user-2">user2</li>
+        </ul>
+
+        <ul class="fruits">
+            <li class="fruit">apple</li>
+            <li class="fruit">banana</li>
+            <li class="fruit">cherry</li>
+            <li class="fruit">dragonfruit</li>
+        </ul>
+
+    </div>
 
 
 
+    <h3>Mouse Events</h3>
+    <div>
+        <button class="btn btn-success" id="clickEvnt">Click event</button>        <!--Fired when a mouse button is clicked (pressed and released) on an element. -->
+        <button class="btn btn-primary" id="musDwnEvnt">MouseDown event</button>  <br/><br/>  <!-- Fired when a mouse button is pressed down on an element-->
+        <button class="btn btn-success" id="musUpEvnt">Mouseup event</button>    <br/><br/>  <!-- Fired when a mouse button is released on an element-->
+        <button class="btn btn-primary" id="musOvrEvnt">MouseOver event</button>  <br/><br/>
+        <button class="btn btn-success" id="musOutEvnt">MouseOut event</button>   <br/><br/>
+        <button class="btn btn-primary" id="musMovEvnt">Mousemove event</button>  <br/><br/>  <!-- Fired when the mouse pointer moves over an element-->
+        <button class="btn btn-success" id="musCntxtEvnt">Contextmenu event</button>   <br/><br/> <!-- Fired when the right mouse button is clicked-->
+    </div>
+
+
+
+    <div class="login-form" style="background:linear-gradient(to right, #0000,#9999);">
+        <h2 style="text-align: center; text-decoration:underline; ">Employee</h2>
+        <form id="e_form">
+            <div class="e_msg" id="e_msg"></div>
+            <div class="mb-3">
+                <label for="ename" class="form-label">Username</label>
+                <input type="text" id="e_name" class="form-control" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+                <label for="e_email" class="form-label">Email</label>
+                <input type="email" id="e_email" class="form-control" placeholder="Enter email">
+            </div>
+            <button type="submit" id="e_subBtn" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+
+    <ul id="users"></ul>
 
 
 </body>

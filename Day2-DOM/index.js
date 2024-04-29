@@ -52,7 +52,7 @@ gtele.style.fontFamily = "sans-serif";
 gtele.style.textDecoration = "underline";
 
 
-// 2)getElementByClassName
+// 2)getElementByClassName              
 let ele = document.getElementsByClassName("heading2");
 console.log(ele);
 ele[0].style.color = "green";
@@ -124,4 +124,5 @@ let hidnEl = document.getElementById("hidnEle");
 console.log(hidnEl);
 console.log(hidnEl.innerText);        // show black as css propety on element id hidden
 console.log(hidnEl.textContent);      // show hidden element
+
 

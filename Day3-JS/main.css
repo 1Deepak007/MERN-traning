@@ -4,3 +4,9 @@
 table, th, td {
     border:1px solid black;
 }
+
+.error {
+    color: red; /* Example: Red text color */
+    font-weight: bold; /* Example: Bold font weight */
+    /* Add any other styles you want to apply */
+}
