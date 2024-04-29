@@ -23,7 +23,9 @@ export default function Home(props) {
             <h2 className='text-center text-decoration-underline'>Home</h2>
             <p>My name is {props.name}. Live in {props.location}. Contact on {props.contact}.</p>
 
+            <hr />
 
+            <h3 className='text-center my-2'>Form</h3>
             <form className="row g-3" onSubmit={formSubmittion}>
                 <div className="col-md-6">
                     <label htmlFor="inputEmail4" className="form-label">Email</label>
