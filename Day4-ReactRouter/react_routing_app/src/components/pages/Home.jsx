@@ -111,10 +111,16 @@ export default function Home(props) {
 
             <hr />
 
-
-            <h4>{count}</h4>
-            <button onClick={() => setCount(count + 1)}>+</button>
-            <button onClick={() => setCount(count - 1)}>-</button>
+            
+            <h5 className='text-decoration-underline'>Count</h5>
+            <div className="row">
+                <div className="col-md-1"><button onClick={() => setCount(count - 1)} className='btn btn-primary'>-</button></div>
+                <div className="col-md-1"><h4>{count}</h4></div>
+                <div className="col-md-1"><button onClick={() => setCount(count + 1)} className='btn btn-success'>+</button></div>
+            </div>
+            
+            <hr />
+            
         </div>
     )
 }

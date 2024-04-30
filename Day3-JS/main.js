@@ -153,6 +153,10 @@ console.log(person.address);
 console.log(person.address.city);               
 console.log(person.hobbies[1]);                 // art
 
+person.phone = 8374837483;
+console.log(person.phone);
+person.appendChild
+
 //----------------------------------------------------
 // Destructuring the object
 
