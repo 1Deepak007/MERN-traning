@@ -344,15 +344,15 @@ todos.forEach((todo)=>console.log(todo.text));
 //# Constructor function
 function Person(firstname,lastname,dob){
     this.firstname = firstname;
-    this.lastName = lastName;
+    this.lastname = lastname;
     this.dob = new Date(dob);
 
     this.GetDetail = function(){
-        return `${this.firstname} ${this.lastName} was born on ${this.dob.getFullYear() +'/'+ this.dob.getMonth() +'/'+ this.dob.getDate()}`
+        return `${this.firstname} ${this.lastname} was born on ${this.dob.getFullYear() +'/'+ this.dob.getMonth() +'/'+ this.dob.getDate()}`
     }
 
     this.GetFullName = function(){
-        return `${this.firstname} ${this.lastName}`
+        return `${this.firstname} ${this.lastname}`
     }
 }
 
@@ -542,6 +542,4 @@ function on_submit(e){
 
     }
 }
-
-
 
