@@ -1,66 +1,55 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { MDBCarousel, MDBCarouselItem } from 'mdb-react-ui-kit';
 import allproducts from '../resources/productsList.json';
 
-import Carousel from 'react-bootstrap/Carousel';
-import Slider from 'react-slick';
 
 
-export default function Card() {
-    const [index, setIndex] = useState(0);
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
+export default function Card({ id, name, image, desc }) {
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
     };
-
-
 
     return (
         <>
-            {
-                allproducts.map(product => {
-                    return (
-                        <>
-                            <Carousel activeIndex={index} onSelect={handleSelect}>
-                                <div className="row">
-                                    <div className="col-md-3" key={product.productid}>
-                                        <div className="card" style={{ width: "18rem", marginRight: '15px' }}>
-                                            <img src={product.productimage} className="card-img-top my-2" alt="image here" />
-                                            <div className="card-body">
-                                                <h5 className="card-title">{product.productname}</h5>
-                                                <p className="card-text">{product.productdescription}</p>
-                                                <a href="#" className="btn btn-primary mx-2">Add to Cart</a>
-                                                <a href="#" className="btn btn-success mx-2">Buy Now</a>
-                                            </div>
+            <div style={{ marginLeft: '0%', display: 'flex' }} className='row'>
+                <MDBCarousel showControls fade>
+                    <MDBCarouselItem itemId={1}>
+                        <div className="col">
+                            <div className="card col-md-3 p-3" style={{ width: "18rem" }}>
+                                <img src={image} className="card-img-top" alt="no image found" />
+                                <div className="card-body">
+                                    <h5 className="card-title">{name}</h5>
+                                    <div className='row'>
+                                        {showFullDescription ? (
+                                            <>
+                                                {desc}
+                                                <br />
+                                                <div className="col">
+                                                    <button onClick={toggleDescription} className='btn btn-primary'>Show Less</button>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                {desc.length > 30 ? desc.slice(0, 50) + '...' : desc}
+                                                <br />
+                                                <div className="col">
+                                                    {desc.length > 30 && <button onClick={toggleDescription} className='btn btn-success'>Show More</button>}
+                                                </div>
+                                            </>
+                                        )}
+                                        <div className="col">
+                                            <Link className='btn btn-primary' to={`viewproduct/${id}`}>View Product</Link>
                                         </div>
                                     </div>
                                 </div>
-                            </Carousel>
+                            </div>
+                        </div>
 
-
-                            {/* <div className="row">
-                                <div className='col-md-12'>
-                                    <div class="row owl-carousel owl-theme">
-                                        <div class="col-md-3 p-1 product_data.item"> 
-                                            <div class="card">
-                                                <img src={product.productimage} class="card-img-top" alt="image here" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-
-                        </>
-                    );
-                })
-            }
+                    </MDBCarouselItem>
+                </MDBCarousel>
+            </div>
         </>
     )
 }
-
-//-----------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-

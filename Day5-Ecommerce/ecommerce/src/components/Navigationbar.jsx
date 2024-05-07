@@ -22,6 +22,7 @@ function Navigationbar() {
               <Link className='nav-link  text-light' to="/">Home</Link>
               <Link className='nav-link  text-light' to="/about">About</Link>
               <Link className='nav-link  text-light' to="/contactus">Contact Us</Link>
+              {/* <Link className='nav-link  text-light' to="/viewproduct">View Product</Link> */}
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown" className='text-light'>
               <Link className='nav-link text-dark' to="/card">Card</Link>
               <NavDropdown.Divider />

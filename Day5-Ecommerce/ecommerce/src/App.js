@@ -5,6 +5,10 @@ import Navigationbar from './components/Navigationbar';
 import Home from './pages/Home';
 import Contactus from './pages/Contactus';
 import About from './pages/About';
+import ViewProduct from './pages/ViewProduct';
+import DisplayIndiProd from './pages/DisplayIndiProd';
+
+
 
 function App() {
   return (
@@ -14,6 +18,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contactus' element={<Contactus/>}/>
+        <Route path='/viewproduct/:id?' element={<ViewProduct/>}/>
       </Routes>
     </>
   );
