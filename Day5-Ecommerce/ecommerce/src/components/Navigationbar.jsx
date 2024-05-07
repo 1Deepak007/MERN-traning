@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import { IoCartOutline } from "react-icons/io5";
 
 
 
@@ -21,6 +22,7 @@ function Navigationbar() {
             <Nav className="me-auto">
               <Link className='nav-link  text-light' to="/">Home</Link>
               <Link className='nav-link  text-light' to="/about">About</Link>
+              <Link className='nav-link  text-light' to="/cart">Cart <IoCartOutline style={{height:'100%'}}/></Link>
               <Link className='nav-link  text-light' to="/contactus">Contact Us</Link>
               {/* <Link className='nav-link  text-light' to="/viewproduct">View Product</Link> */}
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown" className='text-light'>

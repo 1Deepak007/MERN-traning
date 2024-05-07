@@ -34,32 +34,6 @@ export default function About() {
   else
     return (
       <div className='container'>
-
-        {/* <p>{JSON.stringify(data,null,2)}</p>
-        <hr /> */}
-
-        {/* <table>
-          <thead className='table table-striped'>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>USERNAME</th>
-              <th>EMAIL</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((user, index) => {
-              return <tr key={index}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
-                <td>{user.email}</td>
-              </tr>
-            })}
-          </tbody>
-        </table> */}
-
-
         <h3 className='text-center text-decoration-underline my-5'>User Details</h3>
         <table className="table">
           <thead>

@@ -1,8 +1,7 @@
 import React from 'react'
-import { redirect, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import allproducts from '../resources/productsList.json';
-import { useState } from 'react';
 import DisplayIndiProd from './DisplayIndiProd';
 
 

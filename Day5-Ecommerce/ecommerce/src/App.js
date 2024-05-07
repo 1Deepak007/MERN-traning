@@ -7,7 +7,7 @@ import Contactus from './pages/Contactus';
 import About from './pages/About';
 import ViewProduct from './pages/ViewProduct';
 import DisplayIndiProd from './pages/DisplayIndiProd';
-
+import Cart from './components/Cart';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/contactus' element={<Contactus/>}/>
         <Route path='/viewproduct/:id?' element={<ViewProduct/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </>
   );
