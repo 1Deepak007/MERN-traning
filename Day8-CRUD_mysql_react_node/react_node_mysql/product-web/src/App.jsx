@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { IoPersonAdd } from "react-icons/io5";
+
 import axios from "axios"
 import { useRef } from 'react'
+
 
 function App() {
 
@@ -74,7 +77,7 @@ function App() {
   const updateRef = useRef(null);
   const handleUpdate = (product) => {
     setProductData(product);
-    
+
     setIsModalOpen(true);
     updateRef.current.focus();
   }
@@ -93,13 +96,12 @@ function App() {
   }
 
   return (
-    <>
       <div className="main-container">
-        <h2>React Node Mysql</h2>
+        <h2 className='text-decoration-underline'>React Node Mysql</h2>
         <div className="search-box">
           {/* <h3>Search Box</h3> */}
           <input onChange={handleSearchChange} type="search" name='search-box' id='search-box' className='input-search' placeholder='Search Product Here' />
-          <button className='addBtn btn btn-success' onClick={openPopup} >Add Product</button>
+          <button className='addBtn btn btn-success' onClick={openPopup} >Add Product <IoPersonAdd/></button>
         </div>
         <div className="data-box text-center">
           {isModalOpen && (
@@ -119,7 +121,7 @@ function App() {
                 <label htmlFor="brand">Brand</label> <br />
                 <input type="text" value={productData.brand} onChange={handleData} name='brand' id='brand' className='popup-input' />
               </div> <br />
-              <button className='addProductBtn' onClick={handleAddproduct}>{productData.productId ? "Update Product":"Add Product"}</button>
+              <button className='addProductBtn' onClick={handleAddproduct} >{productData.productId ? "Update Product":"Add Product "}</button>
             </div>)}
           <table className='table'>
             <tr>
@@ -159,7 +161,6 @@ function App() {
           </table>
         </div>
       </div>
-    </>
   )
 }
 

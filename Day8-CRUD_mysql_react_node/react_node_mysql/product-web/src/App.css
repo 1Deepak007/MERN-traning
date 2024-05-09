@@ -1,6 +1,10 @@
+*{
+  background-image: linear-gradient();
+}
+
 .main-container{
   width: 525px;
-  margin-left: 30px;;
+  margin-left: 30px;
   display: block;
   height: fit-content;
 }
@@ -15,6 +19,7 @@ h2{
   border:1px solid;
   height: 50px;
   margin-top: 5%;
+  width: 106%;
 }
 
 .data-box{
@@ -25,7 +30,7 @@ h2{
 
 
 .input-search{
-  width:265px;
+  width:240px;
   height:30px;
   margin-left: 20px;
   margin-top: 10px;
@@ -37,7 +42,7 @@ h2{
 .addBtn{
   margin-left: 100px;
   border: 1px solid;
-  width: 120px;
+  width: 140px;
   border-radius: 5px;
   line-height: 10px;
   font-size: 15px;
