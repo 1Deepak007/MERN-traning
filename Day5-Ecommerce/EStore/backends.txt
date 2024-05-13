@@ -1,0 +1,22 @@
+backends
+
+controller
+proucts = getAllProducts()
+
+returb res.json(produts)
+
+getProductById(9)
+
+services
+defined getAllProducts(name,category,brand){
+	const sqlIns = 'INSERT INTO product(name,category,brand) VALUES(?)';
+    	const values = [name, category, brand]
+
+    	console.log(values);
+    	pool.query(sqlIns,[values],(err, result) => {
+        	if (err) return res.json(err)
+        	return result
+    	})
+}
+defined getProductById(id){
+}

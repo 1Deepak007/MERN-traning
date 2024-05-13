@@ -1,0 +1,16 @@
+/* CardCss.css */
+.card-container {
+    width: 18rem; /* Or adjust it according to your design */
+    margin: 0 auto; /* Centers the card container */
+}
+
+.img-container {
+    width: 100%; /* Ensures the image takes the full width of its container */
+    height: auto; /* Allows the image to adjust its height accordingly */
+    overflow: hidden; /* Hides any overflow if the image is larger than its container */
+}
+
+.card-img-top {
+    width: 100%; /* Ensures the image takes the full width of its container */
+    height: auto; /* Allows the image to adjust its height accordingly */
+}

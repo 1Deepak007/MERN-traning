@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { IoPersonAdd } from "react-icons/io5";
+import { IoPersonAdd } from "react-icons/io5"
 
 import axios from "axios"
 import { useRef } from 'react'
@@ -121,7 +121,7 @@ function App() {
                 <label htmlFor="brand">Brand</label> <br />
                 <input type="text" value={productData.brand} onChange={handleData} name='brand' id='brand' className='popup-input' />
               </div> <br />
-              <button className='addProductBtn' onClick={handleAddproduct} >{productData.productId ? "Update Product":"Add Product "}</button>
+              <button className='addProductBtn' onClick={handleAddproduct} >{productData.productId ? "Update Product ":"Add Product "}</button>
             </div>)}
           <table className='table'>
             <tr>
@@ -153,7 +153,7 @@ function App() {
                   <td>{product.name}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
-                  <td><button className='btn btn-success' onClick={() => handleUpdate(product)}>Edit</button></td>
+                  <td><button className='btn btn-success' onClick={() => handleUpdate(product)} >Edit </button></td>
                   <td><button className='btn btn-danger' onClick={() => handleDelete(product.productId)}>Delete</button></td>
                 </tr>)
               })}
