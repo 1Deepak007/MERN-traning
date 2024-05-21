@@ -13,7 +13,7 @@ function App() {
   const [filteredProducts, setFiltredProducts] = useState([]);
   const [productData, setProductData] = useState({ name: "", category: "", brand: "" });
   const [errorMsg,setErrorMsg] = useState("");
-
+  
 
   const openPopup = () => {
     setProductData({name:"",category:"",brand:""});

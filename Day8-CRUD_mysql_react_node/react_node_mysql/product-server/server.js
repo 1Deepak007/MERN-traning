@@ -82,8 +82,6 @@ pool.getConnection((err,connection) => {
 
 
 // creating get-api 
-
-
 app.get('/products', (req, res) => {       
     const sql = 'SELECT * FROM product';
     pool.query(sql, (err, result) => {
