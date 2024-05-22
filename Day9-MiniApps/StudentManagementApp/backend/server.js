@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-// const mysql = require("mysql2");
 const db =require("./db");
 const app = express();
 const userRoutes = require("./routes/userRoutes.js")
@@ -13,7 +12,6 @@ app.use((req,res,next) =>{
 
 // students routing
 app.use("/student",userRoutes);         // userRoutes <- controller  
-
 
 
 // Connect to frontend

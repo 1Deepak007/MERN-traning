@@ -3,9 +3,10 @@ const db = require("../db")
 const addStudent = (req,res) =>{
     const name = req.body.name;
     const email = req.body.email;
-    const sql = "INSERT INTO student (Name, Email) VALUES (?,?)";
+    const password = req.body.password;
+    const sql = "INSERT INTO student (Name, Email, Password) VALUES (?,?,?)";
 
-    db.query(sql, [name,email], (err, result) => {
+    db.query(sql, [name,email,password], (err, result) => {
         if (err) {
             console.error('Error adding student:', err);
             return res.status(500).json({ error: "Error adding student" });

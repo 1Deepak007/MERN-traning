@@ -6,12 +6,13 @@ const CreateStudent = () => {
 
     const [name,setname] = useState('');
     const [email,setemail] = useState('');
+    const [password,setpassword] = useState('');
     const navigate = useNavigate();
 
     // adding student
     function handleSubmit(e){
         e.preventDefault();
-        axios.post('http://localhost:8081/student/add-student',{name,email})
+        axios.post('http://localhost:8081/student/add-student',{name,email,password})
         .then(res=>{
             console.log(res);
             navigate('/');
@@ -29,9 +30,12 @@ const CreateStudent = () => {
                 <input onChange={(e)=>setname(e.target.value)} type="text" name='name' id='name' placeholder='Enter Name' className='form-control' />
             
                 <label htmlFor="email">Email</label>
-                <input onChange={(e)=>setemail(e.target.value)} type="email" email='email' id='email' placeholder='Enter Email' className='form-control' />
+                <input onChange={(e)=>setemail(e.target.value)} type="email" name='email' id='email' placeholder='Enter Email' className='form-control' />
+                
+                <label htmlFor="password">Password</label>
+                <input onChange={(e)=>setpassword(e.target.value)} type="password" name='password' id='password' placeholder='Enter Password' className='form-control' />
 
-                <button className='btn btn-success'>Add Student</button>    
+                <button className='btn btn-success my-2'>Add Student</button>    
             </form>
 
         </div>
