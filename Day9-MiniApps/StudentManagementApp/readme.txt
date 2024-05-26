@@ -10,3 +10,10 @@
 
 
 server.js -> rotes(userRoutes.js) -> controller
+
+In student.jsx
+get students api -> http://localhost:8081/student/get-students
+
+
+-> npm i bcrypt  <- for password encryption
+-> npm i jsonwebtoken <- for verification token

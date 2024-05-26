@@ -6,6 +6,15 @@ const userRoutes = require("./routes/userRoutes.js")
 app.use(express.json()); // to parse JSON bodies
 app.use(cors());
 
+// Configure session middleware
+app.use(session({
+    secret: 'thisismysecretkeyJamesBond007',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure:false}
+}))
+
+// Middleware to handle sessions
 app.use((req,res,next) =>{
     next();
 })
@@ -25,4 +34,3 @@ db.connect((err, connection) => {
     });
     console.log(`Connected to database as ID ${connection.threadId}`);
 });
-

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Student = () => {
@@ -11,6 +11,7 @@ const Student = () => {
     .then(res=>setStudents(res.data))
     .catch(err=>console.log(err))
   },[])
+
 
   console.log(students);
 
