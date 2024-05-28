@@ -7,12 +7,12 @@ app.use(express.json()); // to parse JSON bodies
 app.use(cors());
 
 // Configure session middleware
-app.use(session({
-    secret: 'thisismysecretkeyJamesBond007',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure:false}
-}))
+// app.use(session({
+//     secret: 'thisismysecretkeyJamesBond007',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {secure:false}
+// }))
 
 // Middleware to handle sessions
 app.use((req,res,next) =>{

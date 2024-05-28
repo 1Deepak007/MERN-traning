@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MyForm from './MyForm';
 
-const ViewData = () => {
+const ViewData = ({ setEditUser }) => {
     const [allUsers, setAllUsers] = useState([]);
     const [errorMsg, setErrorMsg] = useState("");
-    const [editUser, setEditUser] = useState(null);
 
     const getAllUsers = () => {
         axios.get('http://localhost:4500/allusers')
@@ -37,64 +35,51 @@ const ViewData = () => {
         }
     };
 
-    const handleEditUser = async (id) => {
-        await axios.get(`http://localhost:4500/getuser/${id}`)
-            .then((res) => {
-                setEditUser(res.data[0]); // Adjusting to fetch the first object from the result array
-            })
-            .catch((error) => {
-                console.error('There was an error getting the user!', error);
-                setErrorMsg('There was an error getting the user!');
-            });
-    }
+    const handleEditUser = (user) => {
+        setEditUser(user);
+    };
 
     return (
         <div>
-            {editUser ? (
-                <MyForm user={editUser} resetEditUser={() => setEditUser(null)} />
-            ) : (
-                <div className="col">
-                    <h2 className='text-center text-decoration-underline mb-2'>User Details </h2>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">City</th>
-                                <th scope="col">State</th>
-                                <th scope="col">Country</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Edit / Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {allUsers.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.name}</td>
-                                    <td>{item.age}</td>
-                                    <td>{item.gender}</td>
-                                    <td>{item.phone}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.city}</td>
-                                    <td>{item.state}</td>
-                                    <td>{item.country}</td>
-                                    <td>{item.address}</td>
-                                    <td className='row'>
-                                        <button className='btn btn-primary' onClick={() => handleEditUser(item.id)}>Edit</button>
-                                        <button className='btn btn-danger' onClick={() => handleDeleteUser(item.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    {errorMsg && <p className='errorwarning' style={{ color: 'red' }}>{errorMsg}</p>}
-                </div>
-            )}
+            <h2>Users List</h2>
+            {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+            <table className='table'>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {allUsers.map((user) => (
+                        <tr key={user.id}>
+                            <td>{user.name}</td>
+                            <td>{user.age}</td>
+                            <td>{user.gender}</td>
+                            <td>{user.phone}</td>
+                            <td>{user.email}</td>
+                            <td>{user.city}</td>
+                            <td>{user.state}</td>
+                            <td>{user.country}</td>
+                            <td>{user.address}</td>
+                            <td>
+                                <button onClick={() => handleEditUser(user)} className='btn btn-info mx-2'>Edit</button>
+                                <button onClick={() => handleDeleteUser(user.id)} className='btn btn-danger'>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
-}
+};
 
 export default ViewData;

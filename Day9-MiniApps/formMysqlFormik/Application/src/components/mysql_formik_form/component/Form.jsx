@@ -8,8 +8,11 @@ export default function Form() {
   return (
     <div className='row'>
       <div className="col">
-        <MyForm />
-        {/* <MyForm user={editUser} resetEditUser={() => setEditUser(null)} /> */}
+        {editUser ? (
+          <MyForm user={editUser} resetEditUser={() => setEditUser(null)} />
+        ) : (
+          <MyForm />
+        )}
       </div>
       <div className="col">
         <ViewData setEditUser={setEditUser} />
@@ -17,26 +20,3 @@ export default function Form() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react'
-// import ViewData from './ViewData'
-// import MyForm from './MyForm'
-
-// export default function Form() {
-//   return (
-//     <div className='row'>
-//       <div className="col"><MyForm /></div>
-//       <div className="col"><ViewData /></div>
-//     </div>
-//   )
-// }
