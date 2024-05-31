@@ -33,7 +33,7 @@ const TaskItem = ({ userId }) => {
 
   const handleDeleteTask=async(taskId)=>{
     try{
-      await axios.delete('http://localhost:8182/deletetask/${taskId}');
+      await axios.delete(`http://localhost:8182/deletetask/${taskId}`);
       setTasks(tasks.filter(task => task.id !== taskId));
     }
     catch(error){

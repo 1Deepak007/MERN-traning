@@ -121,7 +121,7 @@ router.get('/gettasks/:userId', async (req, res) => {
 
 //Delete task
 router.delete('/deletetask/:id',(req,res)=>{
-    const {id} = req.params.id;
+    const {id} = req.params.taskId;
     const sql = "DELETE FROM tasks WHERE id = ?";
     db.query(sql,[id],(err,result)=>{
         if(err){
