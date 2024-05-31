@@ -6,6 +6,8 @@ import bodyParser from 'body-parser';
 import router from './router.js';
 
 const app = express();
+
+// Middleware setup
 app.use(express.json());
 app.use(cors({
     origin: ['http://localhost:3000'],
@@ -26,8 +28,10 @@ app.use(session({
 }));
 app.use(bodyParser.json());
 
+// Use the router
 app.use('/', router);
 
+// Start the server
 app.listen(8182, () => {
     console.log('Server is running on port: 8182');
 });
