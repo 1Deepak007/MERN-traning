@@ -120,17 +120,23 @@ router.get('/gettasks/:userId', async (req, res) => {
 
 
 //Delete task
-router.delete('/deletetask/:id',(req,res)=>{
-    const {id} = req.params.taskId;
-    const sql = "DELETE FROM tasks WHERE id = ?";
-    db.query(sql,[id],(err,result)=>{
-        if(err){
-            console.error('Error deleting task:', err);
-            return res.status(500).json({error:'Error deleting task'})
-        }
-        console.info('Task deleted successfully');
-        return res.status(200).json({message:'Task deleted successfully'})
-    })
+router.delete('/deletetask/:id',async (req,res)=>{
+    const {id} = req.params;
+    console.log('task to be deleted : ',id);
+    try{
+        const sql = "DELETE FROM tasks WHERE id = ?";
+        db.query(sql,[id],(err,result)=>{
+            if(err){
+                console.error('Error deleting task:', err);
+                return res.status(500).json({error:'Error deleting task'})
+            }
+            console.info('Task deleted successfully');
+            return res.status(200).json({message:'Task deleted successfully'})
+        })
+    }
+    catch(error){
+        console.log('Error while deleting : ',error);
+    }
 })
 
 export default router;

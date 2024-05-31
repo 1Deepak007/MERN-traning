@@ -21,7 +21,8 @@ const TaskItem = ({ userId }) => {
     };
   
     fetchTasks();
-  }, [userId,tasks]);
+  }, [userId]);
+  // }, [userId,tasks]);
 
   const handleEditTask=async(taskId)=>{
     console.log('handleEditTask')
@@ -33,6 +34,7 @@ const TaskItem = ({ userId }) => {
 
   const handleDeleteTask=async(taskId)=>{
     try{
+      console.log(taskId);
       await axios.delete(`http://localhost:8182/deletetask/${taskId}`);
       setTasks(tasks.filter(task => task.id !== taskId));
     }
@@ -56,13 +58,13 @@ const TaskItem = ({ userId }) => {
               <p>Status: {task.status}</p>
               <div className="row">
                 <div className="col">
-                  <button onClick={()=>handleEditTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Edit task</button>
+                  <button onClick={()=>handleEditTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Edit </button>
                 </div>
                 <div className="col">
-                  <button onClick={()=>handleMarkasdoneTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Mark as done</button>
+                  <button onClick={()=>handleMarkasdoneTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Done</button>
                 </div>
                 <div className="col">
-                  <button onClick={()=>handleDeleteTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Delete task</button>
+                  <button onClick={()=>handleDeleteTask(task.id)} className='btnStyl2' style={{'height':'35px', 'width':'80%'}}>Delete </button>
                 </div>
               </div>
             </div>
