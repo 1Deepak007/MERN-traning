@@ -59,7 +59,8 @@ router.post('/login', (req, res) => {
 // Home route
 router.get('/home', (req, res) => {
     if (req.session.user) {
-        return res.json({ valid: true, username: req.session.user.username });
+        // passing things to Home.jsx
+        return res.json({ valid: true, userId: req.session.user.id, username: req.session.user.username });
     } else {
         return res.status(401).json({ valid: false });
     }
@@ -103,8 +104,7 @@ router.get('/gettasks/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;
         const sql = `SELECT tasks.id, tasks.title, tasks.description, tasks.duedate, tasks.status
-                    FROM tasks 
-                    WHERE tasks.user_id = ?`;
+                    FROM tasks WHERE tasks.user_id = ?`;
         db.query(sql, [userId], (err, result) => {
             if (err) {
                 console.error('Error while fetching tasks:', err);
@@ -117,6 +117,21 @@ router.get('/gettasks/:userId', async (req, res) => {
         return res.status(500).json({ error: "Error while fetching tasks" });
     }
 });
+
+
+//Delete task
+router.delete('/deletetask/:id',(req,res)=>{
+    const {id} = req.params.id;
+    const sql = "DELETE FROM tasks WHERE id = ?";
+    db.query(sql,[id],(err,result)=>{
+        if(err){
+            console.error('Error deleting task:', err);
+            return res.status(500).json({error:'Error deleting task'})
+        }
+        console.info('Task deleted successfully');
+        return res.status(200).json({message:'Task deleted successfully'})
+    })
+})
 
 export default router;
 

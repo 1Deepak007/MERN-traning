@@ -5,13 +5,12 @@ import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { taskformSchema } from './schemas/Schemas';
 
-const TaskForm = () => {
+const TaskForm = ({ userId }) => {
   const navigate = useNavigate();
-
 
   const formik = useFormik({
     initialValues: {
-      user_id: '',  // Ensure this is filled or obtained from session
+      user_id: userId,
       title: '',
       description: '',
       date_time: '',
@@ -20,7 +19,7 @@ const TaskForm = () => {
     validationSchema: taskformSchema,
     onSubmit: async (values) => {
       const taskData = {
-        user_id: values.user_id,
+        user_id: userId,
         title: values.title,
         description: values.description,
         duedate: values.date_time,
@@ -30,7 +29,7 @@ const TaskForm = () => {
         const res = await axios.post('http://localhost:8182/addtask', taskData);
         console.log(res);
         navigate('/home');
-        alert('Task added successfully')
+        alert('Task added successfully');
       } catch (err) {
         console.log(err);
       }
@@ -44,22 +43,6 @@ const TaskForm = () => {
         <div className="col-md-5 border-2">
           <form onSubmit={formik.handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="user_id" className="form-label">User Id</label>
-              <input
-                type="number"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.user_id}
-                name="user_id"
-                id="user_id"
-                className="form-control"
-                placeholder="1"
-                aria-describedby="helpId"
-              />
-              {formik.touched.user_id && formik.errors.user_id ? (
-                <div className="text-danger">{formik.errors.user_id}</div>
-              ) : null}
-
               <label htmlFor="title" className="form-label">Title</label>
               <input
                 type="text"
@@ -130,7 +113,7 @@ const TaskForm = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TaskForm;
 
