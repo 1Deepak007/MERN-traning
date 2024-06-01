@@ -25,7 +25,7 @@ const SignupLogin = () => {
       console.log(error);
     })
   },[navigate]);
-
+  
   if(isLoggedIn){
     return null;     // render nothing of already loggedin
   }

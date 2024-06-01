@@ -1,24 +1,31 @@
 import express from 'express';
 import cors from 'cors';
+import mysql from 'mysql2';
 import session from 'express-session';
-import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import router from './router.js';
 
+
 const app = express();
+app.use(express.json());
+
+// Server setup
+app.listen(8182, () => {
+    console.log("Server is running on port 8182");
+});
 
 // Middleware setup
-app.use(express.json());
 app.use(cors({
     origin: ['http://localhost:3000'],
-    methods: ["POST", "GET"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 app.use(cookieParser());
 
 // Configure session middleware
 app.use(session({
-    secret: 'secretkey',
+    secret: 'my_secretkey',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -30,8 +37,3 @@ app.use(bodyParser.json());
 
 // Use the router
 app.use('/', router);
-
-// Start the server
-app.listen(8182, () => {
-    console.log('Server is running on port: 8182');
-});

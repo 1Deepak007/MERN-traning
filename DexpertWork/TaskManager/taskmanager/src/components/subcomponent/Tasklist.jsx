@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TaskItem from './TaskItem';
-import '../../styles/buttons.css'
+import axios from 'axios';
+import '../../styles/buttons.css';
 
 const Tasklist = ({ userId }) => {
-    return (
-        <div className='mx-5'>
-            <TaskItem userId={userId} />
-        </div>
-    );
+  const [tasks, setTasks] = useState([]);
+
+  const fetchTasks = useCallback(async () => {
+    try {
+      const response = await axios.get(`http://localhost:8182/gettasks/${userId}`);
+      setTasks(response.data.tasks);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
+  return (
+    <div className='mx-5'>
+      <TaskItem userId={userId} tasks={tasks} fetchTasks={fetchTasks} />
+    </div>
+  );
 };
 
 export default Tasklist;
+
 
 
 
