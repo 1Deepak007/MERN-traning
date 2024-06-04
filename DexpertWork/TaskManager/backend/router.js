@@ -139,14 +139,14 @@ router.delete('/deletetask/:id', async (req, res) => {
 });
 
 // Update task
-router.put('/updatetask/:id', async (req, res) => {
+router.put('/updatetask/:id', (req, res) => {
     const { id } = req.params;
     const { title, description, duedate, status } = req.body;
     console.log('updatetask triggered : id ', id);
     
     const sql = "UPDATE tasks SET title = ?, description = ?, duedate = ?, status = ? WHERE id = ?";
     try {
-        await db.query(sql, [title, description, duedate, status, id], (err, result) => {
+        db.query(sql, [title, description, duedate, status, id], (err, result) => {
             if (err) {
                 console.error('Error while updating : ', err);
                 return res.status(500).json({ error: 'Error while updating task' });
@@ -160,5 +160,28 @@ router.put('/updatetask/:id', async (req, res) => {
     }
 });
 
+// Mark as done
+router.put('/maketaskdone/:id', (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+    console.log('maketaskdone triggered : id ', id, 'status : ', status);
+    const sql = "UPDATE tasks SET status = ? WHERE id = ?";
+    try {
+        db.query(sql, [status, id], (err, result) => {
+            if (err) {
+                console.error('Error while updating : ', err);
+                return res.status(500).json({ error: 'Error while updating task status' });
+            }
+            console.info('Task updated successfully');
+            return res.status(200).json({ message: 'Task updated successfully' });
+        });
+    } catch (error) {
+        console.error('Error while updating : ', error);
+        return res.status(500).json({ error: 'Error while updating task status' });
+    }
+});
 
 export default router;
+
+
+

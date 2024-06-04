@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 import '../styles/buttons.css';
 import InputField from './subcomponent/InputField';
 import axios from 'axios';
@@ -7,28 +7,31 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Formik, Form as FormikForm, ErrorMessage } from 'formik';
 import validationSchema from '../utils/validationSchema';
+import '../styles/fontStyles.css';
+import '../styles/SignupLogin.css';
 
 const SignupLogin = () => {
   const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('http://localhost:8182/home')
-    .then((response) => {
-      if(response.data.valid){
-        navigate('/home')
-        setIsLoggedIn(true);
-      }
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
-  },[navigate]);
-  
-  if(isLoggedIn){
-    return null;     // render nothing of already loggedin
+      .then((response) => {
+        if (response.data.valid) {
+          navigate('/home');
+          setIsLoggedIn(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [navigate]);
+
+  if (isLoggedIn) {
+    return null; // render nothing if already logged in
   }
+
   const handleSwitch = () => {
     setIsSignup(!isSignup);
   };
@@ -68,22 +71,21 @@ const SignupLogin = () => {
     }
   };
 
-  
-
-
   return (
-    <div className="auth-form container mt-5" style={{ paddingLeft: '20%', paddingRight: '20%' }}>
-      <div className="row">
-        <div className="col">
+    <Container className="auth-form mt-40 p-4 shadow rounded text-center" style={{ maxWidth: '500px' }}>
+      <Row className="mb-3">
+        <Col>
           <h1>{isSignup ? 'Sign Up' : 'Login'}</h1>
-        </div>
-        <div className="col mt-3 bg-black text-light border-4 rounded-5 pt-2" style={{ marginLeft: '30%', boxShadow: '3px 3px lime' }}>
+        </Col>
+      </Row>
+      <Row className="mb-3 justify-content-center">
+        <Col xs={12} className="bg-dark text-light rounded p-3">
           {isSignup ? 'Already have an account?' : "Don't have an account?"}
-          <span onClick={handleSwitch} style={{ cursor: 'pointer', color: 'blue' }}>
+          <span onClick={handleSwitch} style={{ cursor: 'pointer', color: 'blue', marginLeft: '10px' }}>
             {isSignup ? 'Log In' : 'Sign Up'}
           </span>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
       <Formik
         initialValues={{ username: '', email: '', password: '' }}
@@ -93,35 +95,39 @@ const SignupLogin = () => {
         {({ isSubmitting }) => (
           <FormikForm>
             {isSignup && (
-              <Row>
-                <Col>
+              <Row className="mb-3">
+                <Col xs={12}>
                   <InputField name="username" placeholder="Enter Name" type="text" />
                   <ErrorMessage name="username" component="div" className="text-danger" />
                 </Col>
               </Row>
             )}
 
-            <Row>
-              <Col>
+            <Row className="mb-3">
+              <Col xs={12}>
                 <InputField name="email" placeholder="Enter Email" type="email" />
                 <ErrorMessage name="email" component="div" className="text-danger" />
               </Col>
             </Row>
 
-            <Row>
-              <Col>
+            <Row className="mb-3">
+              <Col xs={12}>
                 <InputField name="password" placeholder="Enter Password" type="password" />
                 <ErrorMessage name="password" component="div" className="text-danger" />
               </Col>
             </Row>
 
-            <button type="submit" className="btnStyl1 my-2 text-center" disabled={isSubmitting}>
-              {isSignup ? 'Sign Up' : 'Login'}
-            </button>
+            <Row className="mb-3">
+              <Col>
+                <button type="submit" className="btnStyl1" disabled={isSubmitting}>
+                  {isSignup ? 'Sign Up' : 'Login'}
+                </button>
+              </Col>
+            </Row>
           </FormikForm>
         )}
       </Formik>
-    </div>
+    </Container>
   );
 };
 
