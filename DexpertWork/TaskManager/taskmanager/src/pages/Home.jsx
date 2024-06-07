@@ -47,13 +47,13 @@ const Home = () => {
         <div>
             <Navigationbar />
             <div className="row">
-                <div className="col-md-5 mt-5 pt-3 pe-5">
+                {/* <div className="col-md-5 mt-4 pt-3 pe-5">
                     <TaskForm userId={userId} fetchTasks={fetchTasks} />
-                </div>
+                </div> */}
                 <div className="col md-7 mt-4">
-                    <Tasklist userId={userId} tasks={tasks} fetchTasks={fetchTasks} />
                 </div>
             </div>
+                    <Tasklist userId={userId} tasks={tasks} fetchTasks={fetchTasks} />
         </div>
     );
 };

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import '../styles/buttons.css';
 import InputField from './subcomponent/InputField';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { useNavigate, Link } from 'react-router-dom';
+// import Swal from 'sweetalert2';
 import { Formik, Form as FormikForm, ErrorMessage } from 'formik';
 import validationSchema from '../utils/validationSchema';
 import '../styles/fontStyles.css';
 import '../styles/SignupLogin.css';
+
+import { ToastContainer, toast } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignupLogin = () => {
   const navigate = useNavigate();
@@ -50,85 +53,128 @@ const SignupLogin = () => {
         if (res.data.login) {
           navigate('/home');
         } else {
-          Swal.fire({
-            title: 'Error!',
-            text: res.data.error || 'Invalid credentials',
-            icon: 'error',
-            confirmButtonText: 'Try Again!'
-          });
+          // Swal.fire({
+          //   title: 'Error!',
+          //   text: res.data.error || 'Invalid credentials',
+          //   icon: 'error',
+          //   confirmButtonText: 'Try Again!'
+          // });
+          toast.error('Wrong Email or Password');
         }
       }
     } catch (err) {
       console.error(err);
-      Swal.fire({
-        title: 'Error!',
-        text: 'An error occurred. Please try again later.',
-        icon: 'error',
-        confirmButtonText: 'Try Again!'
-      });
+      // Swal.fire({
+      //   title: 'Error!',
+      //   text: 'An error occurred. Please try again later.',
+      //   icon: 'error',
+      //   confirmButtonText: 'Try Again!'
+      // });
+      toast.error('An error occurred. Please try again later.');
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <Container className="auth-form mt-40 p-4 shadow rounded text-center" style={{ maxWidth: '500px' }}>
-      <Row className="mb-3">
-        <Col>
-          <h1>{isSignup ? 'Sign Up' : 'Login'}</h1>
-        </Col>
-      </Row>
-      <Row className="mb-3 justify-content-center">
-        <Col xs={12} className="bg-dark text-light rounded p-3">
-          {isSignup ? 'Already have an account?' : "Don't have an account?"}
-          <span onClick={handleSwitch} style={{ cursor: 'pointer', color: 'blue', marginLeft: '10px' }}>
-            {isSignup ? 'Log In' : 'Sign Up'}
-          </span>
-        </Col>
-      </Row>
-
-      <Formik
-        initialValues={{ username: '', email: '', password: '' }}
-        validationSchema={validationSchema(isSignup)}
-        onSubmit={handleSubmit}
+    <>
+    <div 
+    // style={{'background':'url("https://images.alphacoders.com/135/1350899.png") no-repeat'}}
+    >
+      <Container className="wrapper p-4 shadow rounded text-center" 
+      style={{ maxWidth: '400px', marginTop: '10%' }}
       >
-        {({ isSubmitting }) => (
-          <FormikForm>
-            {isSignup && (
-              <Row className="mb-3">
-                <Col xs={12}>
-                  <InputField name="username" placeholder="Enter Name" type="text" />
-                  <ErrorMessage name="username" component="div" className="text-danger" />
-                </Col>
-              </Row>
-            )}
+        <Formik initialValues={{ username: '', email: '', password: '' }}
+          validationSchema={validationSchema(isSignup)} onSubmit={handleSubmit} >
 
-            <Row className="mb-3">
-              <Col xs={12}>
-                <InputField name="email" placeholder="Enter Email" type="email" />
-                <ErrorMessage name="email" component="div" className="text-danger" />
-              </Col>
-            </Row>
+          {({ isSubmitting }) => (
+            <FormikForm>
+              <h1>{isSignup ? 'Sign Up' : 'Login'}</h1>
 
-            <Row className="mb-3">
-              <Col xs={12}>
-                <InputField name="password" placeholder="Enter Password" type="password" />
-                <ErrorMessage name="password" component="div" className="text-danger" />
-              </Col>
-            </Row>
+              {isSignup && (
+                <div className="input-box">
+                  <InputField name="username" placeholder="Username" type="text" required />
+                  <i className='bx bxs-user'></i>
+                  <ErrorMessage name="username" component="div" className="text-success" />
+                </div>
+              )}
 
-            <Row className="mb-3">
-              <Col>
-                <button type="submit" className="btnStyl1" disabled={isSubmitting}>
-                  {isSignup ? 'Sign Up' : 'Login'}
-                </button>
-              </Col>
-            </Row>
-          </FormikForm>
-        )}
-      </Formik>
-    </Container>
+              <div className="input-box">
+                <InputField name="email" placeholder="Enter Email" type="email" required />
+                <i className='bx bxs-envelope'></i>
+                <ErrorMessage name="email" component="div" className="text-success" />
+              </div>
+
+              <div className="input-box">
+                <InputField className="m-4" name="password" placeholder="Password" type="password" required />
+                <i className='bx bxs-lock-alt'></i>
+
+                <ErrorMessage name="password" component="div" className="text-success" />
+              </div>
+
+
+
+              <button type="submit" className="btn" disabled={isSubmitting}>
+                {isSignup ? 'Sign Up' : 'Login'}
+              </button>
+
+              <div className="register-link">
+                <p>
+                  {isSignup ? 'Already have an account?' : "Don't have an account?"}
+                  <Link onClick={handleSwitch} style={{ cursor: 'pointer', marginLeft: '5px' }}>
+                    {isSignup ? 'Log In' : 'Register'}
+                  </Link>
+                </p>
+              </div>
+            </FormikForm>
+          )}
+        </Formik>
+
+      </Container>
+      <ToastContainer />
+    </div>
+    </>
   );
 };
 
 export default SignupLogin;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     <div class="wrapper">
+//       <form action="">
+//         <h1>Login</h1>
+//         <div class="input-box">
+//           <input type="text" placeholder="Username" required />
+//           <i class='bx bxs-user'></i>
+//         </div>
+//         <div class="input-box">
+//           <input type="password" placeholder="Password" required />
+//           <i class='bx bxs-lock-alt'></i>
+//         </div>
+//         <div class="remember-forgot">
+//           <label>
+//             <input type="checkbox"/>
+//             Remember me
+//           </label>
+//           <a href="#"> Forgot Password?</a>
+//         </div>
+//         <button type="submit" class="btn">Login</button>
+//         <div class="register-link">
+//           <p>Don't have an account? <a href="#">Register</a></p>
+//         </div>
+//       </form>
+//     </div>

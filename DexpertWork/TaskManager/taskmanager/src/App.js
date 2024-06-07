@@ -9,11 +9,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<SignupLogin/>} />
-        <Route path="/home" element={<Home/>} />
+        <Route path="/" element={<SignupLogin />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );
 }
+
 
 export default App;

@@ -7,6 +7,7 @@ import { taskformSchema } from './schemas/Schemas';
 import '../styles/fontStyles.css';
 import { ToastContainer, toast } from 'react-toastify'; // Import Toastify
 import 'react-toastify/dist/ReactToastify.css';
+import '../styles/taskform.css';
 
 const TaskForm = ({ userId, fetchTasks }) => {
   const navigate = useNavigate();
@@ -32,22 +33,28 @@ const TaskForm = ({ userId, fetchTasks }) => {
         await axios.post('http://localhost:8182/addtask', taskData);
         fetchTasks(); // Refresh task list
         navigate('/home');
-        toast.success('Task added successfully'); // Used Toastify success notification
+        toast.success('Task added successfully'); 
       } catch (err) {
         console.log(err);
-        toast.error('Failed to add task'); // Use Toastify error notification
+        toast.error('Failed to add task');
       }
     }
   });
 
   return (
-    <div className="container mx-5 shadow pb-4">
-      <h2 className='text-center text-decoration-underline mb-5 my-2 amaranth-regular py-1'>Add Task</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-5 border-2">
+    <>
+    <div className="shadow w-90 bg-slate-100 ms-7 rounded-2xl pb-3"
+    
+    style={{
+      // 'backgroundColor':'white'
+      'background': 'url("https://images.alphacoders.com/135/1350899.png") no-repeat'
+    }}>
+      <h2 className='text-center text-decoration-underline mb-3 my-2 mt-3 py-4'>Add Task</h2>
+      <div className="row justify-content-center mx-5 pb-4">
+        <div className="col-md-5 border-2 w-100">
         <form onSubmit={formik.handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="title" className="form-label">Title</label>
+              <label htmlFor="title" className="form-label my-3">Title</label>
               <input
                 type="text"
                 onChange={formik.handleChange}
@@ -93,7 +100,7 @@ const TaskForm = ({ userId, fetchTasks }) => {
                 <div className="text-danger">{formik.errors.date_time}</div>
               ) : null}
 
-              <label htmlFor="status" className="form-label mt-4">Status</label>
+              <label htmlFor="status" className="form-label mt-4" style={{'display':'block'}}>Status</label>
               <select
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -110,13 +117,14 @@ const TaskForm = ({ userId, fetchTasks }) => {
                 <div className="text-danger">{formik.errors.status}</div>
               ) : null}
 
-              <button type='submit' className='btnStyl2'>Add Task</button>
+              <button type='submit' className='btnStyl3'>Add Task</button>
             </div>
           </form>
         </div>
       </div>
       <ToastContainer /> {/* Toastify Container */}
     </div>
+    </>
   );
 };
 
