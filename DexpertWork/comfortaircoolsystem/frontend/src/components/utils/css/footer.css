@@ -1,0 +1,7 @@
+.footer {
+    position: fixed; /* Makes the footer stick to the bottom */
+    bottom: 0; /* Positions it at the bottom edge */
+    left: 0; /* Extends width across the entire viewport */
+    width: 100%; /* Ensures full width on all screens */
+    z-index: 10; /* Important to ensure footer stays on top of content */
+  }

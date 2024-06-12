@@ -10,7 +10,7 @@ const Tasklist = ({ userId, tasks, fetchTasks }) => {
 
   return (
     <div className="container mt-3">
-      <h2 className="text-center text-decoration-underline mb-3 my-2 py-1 text-cyan-50">
+      <h2 className="text-center text-decoration-underline mb-3 my-2 py-1 text-black">
         Task List
       </h2>
       <TaskItem userId={userId} tasks={tasks} fetchTasks={fetchTasks} />

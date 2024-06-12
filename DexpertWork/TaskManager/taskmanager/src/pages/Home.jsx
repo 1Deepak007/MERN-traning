@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Navigationbar from '../components/Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import TaskForm from '../components/TaskForm';
+// import TaskForm from '../components/TaskForm';
 import Tasklist from '../components/subcomponent/Tasklist';
 
 const Home = () => {
@@ -44,16 +44,9 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='bg-cover bg-slate-300 h-screen' >
             <Navigationbar />
-            <div className="row">
-                {/* <div className="col-md-5 mt-4 pt-3 pe-5">
-                    <TaskForm userId={userId} fetchTasks={fetchTasks} />
-                </div> */}
-                <div className="col md-7 mt-4">
-                </div>
-            </div>
-                    <Tasklist userId={userId} tasks={tasks} fetchTasks={fetchTasks} />
+            <Tasklist userId={userId} tasks={tasks} fetchTasks={fetchTasks} />
         </div>
     );
 };

@@ -1,0 +1,75 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f0f0f0; /* Optional background color */
+  }
+  
+  .nav-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #333; /* Customize brand name color */
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin-right: 1rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333; /* Customize link color */
+    font-size: 1rem;
+  }
+  
+  .nav-links a:hover {
+    color: #000; /* Optional hover color for links */
+  }
+  
+  /* Responsive Design (Media Queries) */
+  
+  @media (max-width: 768px) {
+    .nav-brand {
+      font-size: 1rem;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #f0f0f0; /* Optional background color for mobile menu */
+      padding: 1rem;
+      display: none;
+    }
+  
+    .nav-links li {
+      margin: 0.5rem 0;
+    }
+  
+    /* Show mobile menu on click of a button */
+    .navbar-toggle {
+      display: block;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  
+    .navbar-toggle:hover {
+      background-color: #e0e0e0; /* Optional hover color for toggle button */
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  }
+  

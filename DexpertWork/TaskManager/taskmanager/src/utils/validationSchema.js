@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 
+// validation scchema name should be in small letter
 const validationSchema = (isSignup) => {
   return Yup.object().shape({
     username: isSignup ? Yup.string().required('Username is required') : Yup.string(),
