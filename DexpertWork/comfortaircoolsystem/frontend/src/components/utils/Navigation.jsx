@@ -17,9 +17,6 @@ const Navbar = () => {
           <Link to="/services" className="text-sm font-medium hover:underline underline-offset-4 hover:bg-slate-300 hover:text-black hover:bg-blue-gray-50 hover:p-1 hover:rounded-xl">
             Services
           </Link>
-          <Link to="/about" className="text-sm font-medium hover:underline underline-offset-4 hover:bg-slate-300 hover:text-black hover:bg-blue-gray-50 hover:p-1 hover:rounded-xl">
-            About
-          </Link>
           <Link to="/contact" className="text-sm font-medium hover:underline underline-offset-4 hover:bg-slate-300 hover:text-black hover:bg-blue-gray-50 hover:p-1 hover:rounded-xl">
             Contact
           </Link>

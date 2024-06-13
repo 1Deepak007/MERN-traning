@@ -10,7 +10,7 @@ const Services = () => {
        <Section heading='Our Services' bg='bg-gray-800' detail='Hear are top-notch services available specially for you.'/>
        
        {/* <CarouselComponent /> */}
-       <ProdCarousel appliance='washingmachine'/>
+       <ProdCarousel appliance='fan'/>
 
     </div>
   )

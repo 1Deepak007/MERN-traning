@@ -74,7 +74,8 @@ export default function Home() {
         </section>
 
 
-        {/* <Section heading='What Our Customers Say' bg='bg-white' dark='dark:bg-gray-800' detail='Hear from real customers who have experienced our top-notch appliance repair service.'/> */}
+        <Section heading='What Our Customers Say' bg='bg-white' dark='dark:bg-gray-800' detail='Hear from real customers who have experienced our top-notch appliance repair service.'/>
+        <Section heading='Frequently Asked Questions' bg='bg-grey-800' dark='dark:bg-gray-800' detail='Get answers to the most common questions about our appliance repair service.'/>
         
 
       </main>
