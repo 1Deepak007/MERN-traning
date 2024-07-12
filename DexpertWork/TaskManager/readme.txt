@@ -1,1 +1,0 @@
-in package.json add (for using import modules) => "type": "module"
